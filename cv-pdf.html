@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV PDF - Gregory GUEUX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #6366f1; --dark: #1e293b; --gray: #64748b; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #f1f5f9; }
+        .top-bar { position: fixed; top: 20px; right: 20px; z-index: 1000; display: flex; gap: 15px; align-items: center; background: white; padding: 10px 15px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .lang-selector { display: flex; gap: 10px; }
+        .download-btn { padding: 8px 16px; background: linear-gradient(135deg, #6366f1 0%, #0ea5e9 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 500; transition: all 0.3s; }
+        .download-btn:hover { transform: scale(1.05); box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4); }
+        .lang-btn { padding: 8px 16px; border: 2px solid var(--primary); background: white; color: var(--primary); border-radius: 8px; cursor: pointer; font-weight: 500; transition: all 0.3s; }
+        .lang-btn.active, .lang-btn:hover { background: var(--primary); color: white; }
+        .cv-container { max-width: 800px; margin: 80px auto 40px; background: white; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        @media print { .top-bar { display: none; } .cv-container { margin: 0; box-shadow: none; } }
+        @page { size: A4; margin: 10mm; }
+        .cv-header { background: linear-gradient(135deg, #6366f1 0%, #0ea5e9 100%); color: white; padding: 25px 30px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .cv-header h1 { font-size: 2em; margin-bottom: 3px; }
+        .cv-header .title { font-size: 1.1em; opacity: 0.9; margin-bottom: 10px; }
+        .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; font-size: 0.8em; }
+        .contact-item { display: flex; align-items: center; gap: 6px; }
+        .cv-body { padding: 20px 30px; }
+        .section { margin-bottom: 15px; }
+        .section-title { font-size: 1.1em; color: var(--primary); border-bottom: 2px solid var(--primary); padding-bottom: 5px; margin-bottom: 10px; }
+        .exp-item { margin-bottom: 12px; }
+        .exp-header { display: flex; justify-content: space-between; margin-bottom: 3px; }
+        .exp-title { font-weight: 600; font-size: 0.95em; }
+        .exp-date { color: var(--primary); font-size: 0.85em; }
+        .exp-company { color: var(--gray); font-size: 0.85em; margin-bottom: 5px; }
+        .exp-list { margin-left: 18px; color: var(--gray); font-size: 0.85em; }
+        .exp-list li { margin-bottom: 2px; }
+        .skills-row { margin-bottom: 5px; font-size: 0.85em; }
+        .skills-row strong { color: var(--dark); }
+        .skills-row span { color: var(--gray); }
+        .edu-item { margin-bottom: 5px; font-size: 0.9em; }
+        .edu-year { color: var(--primary); font-weight: 600; }
+        .pgp-section { background: #f8fafc; padding: 10px; border-radius: 6px; margin-top: 10px; }
+        .pgp-section h4 { color: var(--primary); margin-bottom: 5px; font-size: 0.9em; }
+        .pgp-key { font-family: monospace; font-size: 0.55em; word-break: break-all; color: var(--gray); white-space: pre-wrap; line-height: 1.3; }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <button class="download-btn" onclick="window.print()">📄 <span data-i18n="download">Télécharger PDF</span></button>
+        <div class="lang-selector">
+            <button class="lang-btn active" data-lang="fr">🇫🇷 FR</button>
+            <button class="lang-btn" data-lang="en">🇬🇧 EN</button>
+            <button class="lang-btn" data-lang="de">🇩🇪 DE</button>
+            <button class="lang-btn" data-lang="ja">🇯🇵 JA</button>
+        </div>
+    </div>
+
+    <div class="cv-container" id="cv">
+        <div class="cv-header">
+            <h1>Gregory GUEUX</h1>
+            <div class="title" data-i18n="title">Ingénieur DevSecOps & SRE</div>
+            <div class="description" data-i18n="description" style="font-size: 0.85em; opacity: 0.9; margin-bottom: 10px; line-height: 1.4;">Ingénieur spécialisé en automatisation, sécurité des infrastructures et observabilité. Expertise en conception de pipelines CI/CD, gestion de plateformes de monitoring à grande échelle et fiabilisation des systèmes de production.</div>
+            <div class="contact-grid">
+                <div class="contact-item">📍 Villeurbanne</div>
+                <div class="contact-item">📞 +33 6 51 78 15 96</div>
+                <div class="contact-item">✉️ resume@a.gregorygueux.fr</div>
+                <div class="contact-item">🔗 linkedin.com/in/grégory-gueux</div>
+                <div class="contact-item" data-i18n="age">33 ans - Permis B</div>
+                <div class="contact-item">🔑 <a href="publickey.contact@gregorygueux.fr-3c5e72d523cb81e177e0c60c59a7c2a7204ecfab.asc" download style="color: white;">PGP Key</a></div>
+            </div>
+        </div>
+        <div class="cv-body">
+            <div class="section">
+                <h2 class="section-title" data-i18n="exp">Expériences</h2>
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="exp-title">Consultant DevOps</span>
+                        <span class="exp-date">11/2022 - <span data-i18n="now">Aujourd'hui</span></span>
+                    </div>
+                    <div class="exp-company">CCL Consulting - Lyon | Client Enedis</div>
+                    <ul class="exp-list">
+                        <li data-i18n="exp1_1">Administration et évolution de la plateforme d'observabilité (logs, métriques) pour l'ensemble de la DSI avec Elastic Stack et Grafana sur RHEL 8/9</li>
+                        <li data-i18n="exp1_2">Conception et déploiement d'une nouvelle chaîne CI/CD complète avec Terraform, GitLab CI/CD et Ansible</li>
+                        <li data-i18n="exp1_3">Intégration d'OpenTelemetry pour le tracing distribué et l'analyse des parcours utilisateurs</li>
+                        <li data-i18n="exp1_4">Support technique niveau 3 et accompagnement des équipes</li>
+                    </ul>
+                </div>
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="exp-title">Consultant DevOps</span>
+                        <span class="exp-date">07/2020 - 11/2022</span>
+                    </div>
+                    <div class="exp-company">Astek - Lyon | Client Cegid</div>
+                    <ul class="exp-list">
+                        <li data-i18n="exp2_1">Pilotage de la migration du portefeuille clients vers une infrastructure mutualisée en partenariat avec IBM Cloud</li>
+                        <li data-i18n="exp2_2">Automatisation des déploiements via pipelines Azure DevOps</li>
+                        <li data-i18n="exp2_3">Support utilisateur niveau 2</li>
+                    </ul>
+                </div>
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="exp-title">Consultant</span>
+                        <span class="exp-date">11/2019 - 06/2020</span>
+                    </div>
+                    <div class="exp-company">Capgemini - Lyon | Client Enedis</div>
+                    <ul class="exp-list">
+                        <li data-i18n="exp3_1">Support client niveau 2</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="section">
+                <h2 class="section-title" data-i18n="skills">Compétences</h2>
+                <div class="skills-row"><strong>CI/CD:</strong> <span>Ansible, Terraform/OpenTofu, Artifactory, Gitlab CI/CD, Jenkins, Azure DevOps, Bitbucket</span></div>
+                <div class="skills-row"><strong data-i18n="db">Bases de Données:</strong> <span>Elasticsearch, MySQL, MariaDB</span></div>
+                <div class="skills-row"><strong>Monitoring:</strong> <span>Grafana, Kibana, Prometheus</span></div>
+                <div class="skills-row"><strong data-i18n="containers">Conteneurs / Virtualisation:</strong> <span>Kubernetes, Docker, OpenStack, VMware vSphere</span></div>
+                <div class="skills-row"><strong>Scripting:</strong> <span>Python, Bash, PowerShell</span></div>
+                <div class="skills-row"><strong data-i18n="methods">Méthodologies:</strong> <span>Agile (Jira)</span></div>
+                <div class="skills-row"><strong>Streaming:</strong> <span>Kafka</span></div>
+                <div class="skills-row"><strong data-i18n="collector">Collecteur:</strong> <span>Suite Elastic, Telegraf, Collectd</span></div>
+                <div class="skills-row"><strong>ITSM:</strong> <span>ServiceNow</span></div>
+                <div class="skills-row"><strong>OS:</strong> <span>RHEL</span></div>
+            </div>
+            <div class="section">
+                <h2 class="section-title" data-i18n="education">Formation</h2>
+                <div class="edu-item"><span class="edu-year">2019</span> - Master Informatique, Université Claude Bernard - Lyon 1</div>
+                <div class="edu-item"><span class="edu-year">2017</span> - <span data-i18n="bachelor">Licence Informatique</span>, Université Claude Bernard - Lyon 1</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+const translations = {
+    fr: { title: "Ingénieur DevSecOps & SRE", age: "33 ans - Permis B", exp: "Expériences", now: "Aujourd'hui", skills: "Compétences", db: "Bases de données:", containers: "Conteneurs & Virtualisation:", methods: "Méthodologies & ITSM:", collector: "Streaming & Collecte:", education: "Formation", bachelor: "Licence Informatique", pgp: "Clé publique PGP", download: "Télécharger PDF",
+        description: "Ingénieur spécialisé en automatisation, sécurité des infrastructures et observabilité. Expertise en conception de pipelines CI/CD, gestion de plateformes de monitoring à grande échelle et fiabilisation des systèmes de production.",
+        exp1_1: "Administration et évolution de la plateforme d'observabilité (logs, métriques) pour l'ensemble de la DSI avec Elastic Stack et Grafana sur RHEL 8/9",
+        exp1_2: "Conception et déploiement d'une nouvelle chaîne CI/CD complète avec Terraform, GitLab CI/CD et Ansible",
+        exp1_3: "Intégration d'OpenTelemetry pour le tracing distribué et l'analyse des parcours utilisateurs",
+        exp1_4: "Support technique niveau 3 et accompagnement des équipes",
+        exp2_1: "Pilotage de la migration du portefeuille clients vers une infrastructure mutualisée en partenariat avec IBM Cloud",
+        exp2_2: "Automatisation des déploiements via pipelines Azure DevOps",
+        exp2_3: "Support utilisateur niveau 2",
+        exp3_1: "Support client niveau 2" },
+    en: { title: "DevSecOps & SRE Engineer", age: "33 years old - Driving License B", exp: "Experience", now: "Present", skills: "Skills", db: "Databases:", containers: "Containers & Virtualization:", methods: "Methodologies & ITSM:", collector: "Streaming & Collection:", education: "Education", bachelor: "Bachelor's in Computer Science", pgp: "PGP Public Key", download: "Download PDF",
+        description: "Engineer specialized in automation, infrastructure security and observability. Expertise in CI/CD pipeline design, large-scale monitoring platforms and production system reliability.",
+        exp1_1: "Administration and evolution of the observability platform (logs, metrics) for the entire IT department using Elastic Stack and Grafana on RHEL 8/9",
+        exp1_2: "Design and deployment of a complete CI/CD pipeline with Terraform, GitLab CI/CD and Ansible",
+        exp1_3: "Integration of OpenTelemetry for distributed tracing and user journey analysis",
+        exp1_4: "Level 3 technical support and team mentoring",
+        exp2_1: "Led the migration of client portfolio to a shared infrastructure in partnership with IBM Cloud",
+        exp2_2: "Deployment automation through Azure DevOps pipelines",
+        exp2_3: "Level 2 user support",
+        exp3_1: "Level 2 client support" },
+    de: { title: "DevSecOps & SRE Ingenieur", age: "33 Jahre - Führerschein B", exp: "Berufserfahrung", now: "Heute", skills: "Fähigkeiten", db: "Datenbanken:", containers: "Container & Virtualisierung:", methods: "Methoden & ITSM:", collector: "Streaming & Sammlung:", education: "Ausbildung", bachelor: "Bachelor Informatik", pgp: "Öffentlicher PGP-Schlüssel", download: "PDF herunterladen",
+        description: "Ingenieur spezialisiert auf Automatisierung, Infrastruktursicherheit und Observability. Expertise in CI/CD-Pipeline-Design, großflächigen Monitoring-Plattformen und Zuverlässigkeit von Produktionssystemen.",
+        exp1_1: "Administration und Weiterentwicklung der Observability-Plattform (Logs, Metriken) für die gesamte IT-Abteilung mit Elastic Stack und Grafana auf RHEL 8/9",
+        exp1_2: "Konzeption und Bereitstellung einer vollständigen CI/CD-Pipeline mit Terraform, GitLab CI/CD und Ansible",
+        exp1_3: "Integration von OpenTelemetry für verteiltes Tracing und Analyse der Benutzerreisen",
+        exp1_4: "Technischer Support Level 3 und Teambegleitung",
+        exp2_1: "Leitung der Migration des Kundenportfolios zu einer gemeinsamen Infrastruktur in Partnerschaft mit IBM Cloud",
+        exp2_2: "Automatisierung der Bereitstellungen über Azure DevOps Pipelines",
+        exp2_3: "Benutzersupport Level 2",
+        exp3_1: "Kundensupport Level 2" },
+    ja: { title: "DevSecOps & SREエンジニア", age: "33歳 - 運転免許B", exp: "職歴", now: "現在", skills: "スキル", db: "データベース:", containers: "コンテナ & 仮想化:", methods: "方法論 & ITSM:", collector: "ストリーミング & 収集:", education: "学歴", bachelor: "情報学学士", pgp: "PGP公開鍵", download: "PDFダウンロード",
+        description: "自動化、インフラセキュリティ、可観測性を専門とするエンジニア。CI/CDパイプライン設計、大規模監視プラットフォーム、本番システムの信頼性向上に関する専門知識。",
+        exp1_1: "RHEL 8/9上でElastic StackとGrafanaを使用したIT部門全体の可観測性プラットフォーム（ログ、メトリクス）の管理と進化",
+        exp1_2: "Terraform、GitLab CI/CD、Ansibleによる完全なCI/CDパイプラインの設計と展開",
+        exp1_3: "分散トレーシングとユーザージャーニー分析のためのOpenTelemetryの統合",
+        exp1_4: "レベル3テクニカルサポートとチームメンタリング",
+        exp2_1: "IBM Cloudとのパートナーシップによる共有インフラへのクライアントポートフォリオ移行をリード",
+        exp2_2: "Azure DevOpsパイプラインによるデプロイメント自動化",
+        exp2_3: "レベル2ユーザーサポート",
+        exp3_1: "レベル2クライアントサポート" }
+};
+
+let currentLang = new URLSearchParams(window.location.search).get('lang') || 'fr';
+
+function setLanguage(lang) {
+    currentLang = lang;
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (translations[lang][key]) el.textContent = translations[lang][key];
+    });
+    document.documentElement.lang = lang;
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+});
+
+setLanguage(currentLang);
+
+// Auto-download PDF
+window.onload = () => { setTimeout(() => window.print(), 500); };
+    </script>
+</body>
+</html>

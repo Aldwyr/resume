@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Gregory GUEUX - Ingénieur DevSecOps & SRE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #0ea5e9;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gradient: linear-gradient(135deg, #6366f1 0%, #0ea5e9 100%);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background: var(--light);
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        nav.scrolled {
+            padding: 10px 0;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.3em;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        /* Language Selector */
+        .lang-selector {
+            display: flex;
+            gap: 5px;
+            margin-left: 20px;
+        }
+        .lang-btn {
+            padding: 6px 12px;
+            border: 2px solid var(--primary);
+            background: white;
+            color: var(--primary);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.85em;
+            transition: all 0.3s;
+        }
+        .lang-btn.active, .lang-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        .download-btn {
+            padding: 8px 16px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9em;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: float 20s linear infinite;
+        }
+        @keyframes float {
+            0% { transform: translate(-10%, -10%); }
+            100% { transform: translate(10%, 10%); }
+        }
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            padding: 20px;
+        }
+        .hero h1 {
+            font-size: 4em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            animation: fadeInUp 1s ease;
+        }
+        .hero .subtitle {
+            font-size: 1.8em;
+            font-weight: 300;
+            margin-bottom: 15px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        .hero-description {
+            font-size: 1.1em;
+            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto 25px;
+            opacity: 0.9;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+        .hero-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        .hero-info span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1em;
+            opacity: 0.9;
+        }
+        .hero-info a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        .hero-info a:hover {
+            opacity: 0.7;
+        }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+        .scroll-indicator i {
+            font-size: 2em;
+            color: white;
+            opacity: 0.7;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-15px); }
+            60% { transform: translateX(-50%) translateY(-7px); }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Sections */
+        section {
+            padding: 100px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: 2.5em;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+        
+        /* Experience Cards */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gradient);
+            border-radius: 3px;
+        }
+        .experience-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            position: relative;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+        .experience-card.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 40px;
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 4px solid var(--light);
+        }
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
+        }
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .experience-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        .experience-company {
+            color: var(--primary);
+            font-weight: 500;
+        }
+        .experience-date {
+            background: var(--gradient);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+        .experience-client {
+            color: var(--gray);
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        .experience-list {
+            list-style: none;
+        }
+        .experience-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: var(--gray);
+        }
+        .experience-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .skill-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .skill-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
+        }
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .skill-icon i {
+            font-size: 1.5em;
+            color: white;
+        }
+        .skill-card h3 {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .skill-tag {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(14, 165, 233, 0.1) 100%);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .skill-tag:hover {
+            background: var(--gradient);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        /* Education */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        .education-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        .education-card.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .education-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient);
+        }
+        .education-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
+        }
+        .education-year {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .education-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        .education-card p {
+            color: var(--gray);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+        }
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .footer-links a {
+            color: white;
+            font-size: 1.5em;
+            transition: all 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--secondary);
+            transform: translateY(-5px);
+        }
+        .footer-text {
+            opacity: 0.7;
+            font-size: 0.9em;
+        }
+        
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--dark);
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            .hero .subtitle {
+                font-size: 1.3em;
+            }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .menu-toggle {
+                display: flex;
+            }
+            .section-title {
+                font-size: 2em;
+            }
+            section {
+                padding: 60px 20px;
+            }
+            .experience-header {
+                flex-direction: column;
+            }
+            .timeline {
+                padding-left: 20px;
+            }
+            .experience-card::before {
+                left: -28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">GG</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#experience" data-i18n="nav_exp">Expériences</a></li>
+                <li><a href="#skills" data-i18n="nav_skills">Compétences</a></li>
+                <li><a href="#education" data-i18n="nav_edu">Formation</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="lang-selector">
+                <button class="lang-btn active" data-lang="fr">FR</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="de">DE</button>
+                <button class="lang-btn" data-lang="ja">JA</button>
+            </div>
+            <button class="download-btn" onclick="window.open('cv-pdf.html?lang=' + currentLang, '_blank')">
+                <i class="fas fa-download"></i> <span data-i18n="download">Télécharger PDF</span>
+            </button>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Gregory GUEUX</h1>
+            <p class="subtitle" data-i18n="title">Ingénieur DevSecOps & SRE</p>
+            <p class="hero-description" data-i18n="description">Ingénieur spécialisé en automatisation, sécurité des infrastructures et observabilité. Expertise en conception de pipelines CI/CD, gestion de plateformes de monitoring à grande échelle et fiabilisation des systèmes de production.</p>
+            <div class="hero-info">
+                <span><i class="fas fa-map-marker-alt"></i> Villeurbanne</span>
+                <span><i class="fas fa-phone"></i> +33 6 51 78 15 96</span>
+                <span><i class="fas fa-envelope"></i> <a href="mailto:resume@a.gregorygueux.fr">resume@a.gregorygueux.fr</a></span>
+                <span><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/grégory-gueux" target="_blank">LinkedIn</a></span>
+                <span><i class="fas fa-car"></i> <span data-i18n="age">33 ans - Permis B</span></span>
+                <span><i class="fas fa-key"></i> <a href="publickey.contact@gregorygueux.fr-3c5e72d523cb81e177e0c60c59a7c2a7204ecfab.asc" download>PGP Key</a></span>
+            </div>
+        </div>
+        <div class="scroll-indicator" onclick="document.getElementById('experience').scrollIntoView()">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2 class="section-title" data-i18n="nav_exp">Expériences</h2>
+        <div class="timeline">
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title" data-i18n="exp1_title">Consultant DevOps</div>
+                        <div class="experience-company">CCL Consulting - Lyon</div>
+                    </div>
+                    <span class="experience-date">11/2022 - <span data-i18n="now">Aujourd'hui</span></span>
+                </div>
+                <p class="experience-client"><i class="fas fa-building"></i> <span data-i18n="exp1_client">Client Enedis</span></p>
+                <ul class="experience-list">
+                    <li data-i18n="exp1_1">Administration et évolution de la plateforme d'observabilité (logs, métriques) pour l'ensemble de la DSI avec Elastic Stack et Grafana sur RHEL 8/9</li>
+                    <li data-i18n="exp1_2">Conception et déploiement d'une nouvelle chaîne CI/CD complète avec Terraform, GitLab CI/CD et Ansible</li>
+                    <li data-i18n="exp1_3">Intégration d'OpenTelemetry pour le tracing distribué et l'analyse des parcours utilisateurs</li>
+                    <li data-i18n="exp1_4">Support technique niveau 3 et accompagnement des équipes</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title" data-i18n="exp2_title">Consultant DevOps</div>
+                        <div class="experience-company">Astek - Lyon</div>
+                    </div>
+                    <span class="experience-date">07/2020 - 11/2022</span>
+                </div>
+                <p class="experience-client"><i class="fas fa-building"></i> <span data-i18n="exp2_client">Client Cegid</span></p>
+                <ul class="experience-list">
+                    <li data-i18n="exp2_1">Pilotage de la migration du portefeuille clients vers une infrastructure mutualisée en partenariat avec IBM Cloud</li>
+                    <li data-i18n="exp2_2">Automatisation des déploiements via pipelines Azure DevOps</li>
+                    <li data-i18n="exp2_3">Support utilisateur niveau 2</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title" data-i18n="exp3_title">Consultant</div>
+                        <div class="experience-company">Capgemini - Lyon</div>
+                    </div>
+                    <span class="experience-date">11/2019 - 06/2020</span>
+                </div>
+                <p class="experience-client"><i class="fas fa-building"></i> <span data-i18n="exp3_client">Client Enedis</span></p>
+                <ul class="experience-list">
+                    <li data-i18n="exp3_1">Support client niveau 2</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title" data-i18n="nav_skills">Compétences</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-code-branch"></i></div>
+                <h3 data-i18n="skill_cicd">CI/CD & Automatisation</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Ansible</span>
+                    <span class="skill-tag">Terraform</span>
+                    <span class="skill-tag">OpenTofu</span>
+                    <span class="skill-tag">Artifactory</span>
+                    <span class="skill-tag">GitLab CI/CD</span>
+                    <span class="skill-tag">Jenkins</span>
+                    <span class="skill-tag">Azure DevOps</span>
+                    <span class="skill-tag">Bitbucket</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-database"></i></div>
+                <h3 data-i18n="skill_db">Bases de données</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Elasticsearch</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">MariaDB</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
+                <h3 data-i18n="skill_monitoring">Observabilité</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Grafana</span>
+                    <span class="skill-tag">Kibana</span>
+                    <span class="skill-tag">Prometheus</span>
+                    <span class="skill-tag">OpenTelemetry</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-cubes"></i></div>
+                <h3 data-i18n="skill_containers">Conteneurs & Virtualisation</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Kubernetes</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">OpenStack</span>
+                    <span class="skill-tag">VMware vSphere</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-terminal"></i></div>
+                <h3 data-i18n="skill_scripting">Scripting</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Bash</span>
+                    <span class="skill-tag">PowerShell</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-stream"></i></div>
+                <h3 data-i18n="skill_streaming">Streaming & Collecte</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Kafka</span>
+                    <span class="skill-tag">Elastic Beats</span>
+                    <span class="skill-tag">Telegraf</span>
+                    <span class="skill-tag">Collectd</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-tasks"></i></div>
+                <h3 data-i18n="skill_methods">Méthodologies & ITSM</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Agile</span>
+                    <span class="skill-tag">Jira</span>
+                    <span class="skill-tag">ServiceNow</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-server"></i></div>
+                <h3 data-i18n="skill_os">Systèmes</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">RHEL</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <h2 class="section-title" data-i18n="nav_edu">Formation</h2>
+        <div class="education-grid">
+            <div class="education-card">
+                <span class="education-year">2019</span>
+                <h3 data-i18n="edu_master">Master Informatique</h3>
+                <p>Université Claude Bernard - Lyon 1</p>
+            </div>
+            <div class="education-card">
+                <span class="education-year">2017</span>
+                <h3 data-i18n="edu_licence">Licence Informatique</h3>
+                <p>Université Claude Bernard - Lyon 1</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="mailto:resume@a.gregorygueux.fr" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://linkedin.com/in/grégory-gueux" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="tel:+33651781596" title="Téléphone"><i class="fas fa-phone"></i></a>
+                <a href="publickey.contact@gregorygueux.fr-3c5e72d523cb81e177e0c60c59a7c2a7204ecfab.asc" title="PGP Key" download><i class="fas fa-key"></i></a>
+            </div>
+            <p class="footer-text">© 2026 Gregory GUEUX - <span data-i18n="title">Ingénieur DevSecOps & SRE</span></p>
+        </div>
+    </footer>
+
+    <script>
+        // Translations
+        const translations = {
+            fr: {
+                nav_exp: "Expériences", nav_skills: "Compétences", nav_edu: "Formation", title: "Ingénieur DevSecOps & SRE",
+                age: "33 ans - Permis B", now: "Aujourd'hui", download: "Télécharger PDF",
+                description: "Ingénieur spécialisé en automatisation, sécurité des infrastructures et observabilité. Expertise en conception de pipelines CI/CD, gestion de plateformes de monitoring à grande échelle et fiabilisation des systèmes de production.",
+                exp1_title: "Consultant DevOps", exp1_client: "Client Enedis",
+                exp1_1: "Administration et évolution de la plateforme d'observabilité (logs, métriques) pour l'ensemble de la DSI avec Elastic Stack et Grafana sur RHEL 8/9",
+                exp1_2: "Conception et déploiement d'une nouvelle chaîne CI/CD complète avec Terraform, GitLab CI/CD et Ansible",
+                exp1_3: "Intégration d'OpenTelemetry pour le tracing distribué et l'analyse des parcours utilisateurs",
+                exp1_4: "Support technique niveau 3 et accompagnement des équipes",
+                exp2_title: "Consultant DevOps", exp2_client: "Client Cegid",
+                exp2_1: "Pilotage de la migration du portefeuille clients vers une infrastructure mutualisée en partenariat avec IBM Cloud",
+                exp2_2: "Automatisation des déploiements via pipelines Azure DevOps",
+                exp2_3: "Support utilisateur niveau 2",
+                exp3_title: "Consultant", exp3_client: "Client Enedis", exp3_1: "Support client niveau 2",
+                skill_cicd: "CI/CD & Automatisation", skill_db: "Bases de données", skill_monitoring: "Observabilité",
+                skill_containers: "Conteneurs & Virtualisation", skill_scripting: "Scripting", skill_streaming: "Streaming & Collecte",
+                skill_methods: "Méthodologies & ITSM", skill_os: "Systèmes",
+                edu_master: "Master Informatique", edu_licence: "Licence Informatique"
+            },
+            en: {
+                nav_exp: "Experience", nav_skills: "Skills", nav_edu: "Education", title: "DevSecOps & SRE Engineer",
+                age: "33 years old - Driving License B", now: "Present", download: "Download PDF",
+                description: "Engineer specialized in automation, infrastructure security and observability. Expertise in CI/CD pipeline design, large-scale monitoring platforms and production system reliability.",
+                exp1_title: "DevOps Consultant", exp1_client: "Client Enedis",
+                exp1_1: "Administration and evolution of the observability platform (logs, metrics) for the entire IT department using Elastic Stack and Grafana on RHEL 8/9",
+                exp1_2: "Design and deployment of a complete CI/CD pipeline with Terraform, GitLab CI/CD and Ansible",
+                exp1_3: "Integration of OpenTelemetry for distributed tracing and user journey analysis",
+                exp1_4: "Level 3 technical support and team mentoring",
+                exp2_title: "DevOps Consultant", exp2_client: "Client Cegid",
+                exp2_1: "Led the migration of client portfolio to a shared infrastructure in partnership with IBM Cloud",
+                exp2_2: "Deployment automation through Azure DevOps pipelines",
+                exp2_3: "Level 2 user support",
+                exp3_title: "Consultant", exp3_client: "Client Enedis", exp3_1: "Level 2 client support",
+                skill_cicd: "CI/CD & Automation", skill_db: "Databases", skill_monitoring: "Observability",
+                skill_containers: "Containers & Virtualization", skill_scripting: "Scripting", skill_streaming: "Streaming & Collection",
+                skill_methods: "Methodologies & ITSM", skill_os: "Systems",
+                edu_master: "Master's in Computer Science", edu_licence: "Bachelor's in Computer Science"
+            },
+            de: {
+                nav_exp: "Berufserfahrung", nav_skills: "Fähigkeiten", nav_edu: "Ausbildung", title: "DevSecOps & SRE Ingenieur",
+                age: "33 Jahre - Führerschein B", now: "Heute", download: "PDF herunterladen",
+                description: "Ingenieur spezialisiert auf Automatisierung, Infrastruktursicherheit und Observability. Expertise in CI/CD-Pipeline-Design, großflächigen Monitoring-Plattformen und Zuverlässigkeit von Produktionssystemen.",
+                exp1_title: "DevOps-Berater", exp1_client: "Kunde Enedis",
+                exp1_1: "Administration und Weiterentwicklung der Observability-Plattform (Logs, Metriken) für die gesamte IT-Abteilung mit Elastic Stack und Grafana auf RHEL 8/9",
+                exp1_2: "Konzeption und Bereitstellung einer vollständigen CI/CD-Pipeline mit Terraform, GitLab CI/CD und Ansible",
+                exp1_3: "Integration von OpenTelemetry für verteiltes Tracing und Analyse der Benutzerreisen",
+                exp1_4: "Technischer Support Level 3 und Teambegleitung",
+                exp2_title: "DevOps-Berater", exp2_client: "Kunde Cegid",
+                exp2_1: "Leitung der Migration des Kundenportfolios zu einer gemeinsamen Infrastruktur in Partnerschaft mit IBM Cloud",
+                exp2_2: "Automatisierung der Bereitstellungen über Azure DevOps Pipelines",
+                exp2_3: "Benutzersupport Level 2",
+                exp3_title: "Berater", exp3_client: "Kunde Enedis", exp3_1: "Kundensupport Level 2",
+                skill_cicd: "CI/CD & Automatisierung", skill_db: "Datenbanken", skill_monitoring: "Observability",
+                skill_containers: "Container & Virtualisierung", skill_scripting: "Scripting", skill_streaming: "Streaming & Sammlung",
+                skill_methods: "Methoden & ITSM", skill_os: "Systeme",
+                edu_master: "Master Informatik", edu_licence: "Bachelor Informatik"
+            },
+            ja: {
+                nav_exp: "職歴", nav_skills: "スキル", nav_edu: "学歴", title: "DevSecOps & SREエンジニア",
+                age: "33歳 - 運転免許B", now: "現在", download: "PDFダウンロード",
+                description: "自動化、インフラセキュリティ、可観測性を専門とするエンジニア。CI/CDパイプライン設計、大規模監視プラットフォーム、本番システムの信頼性向上に関する専門知識。",
+                exp1_title: "DevOpsコンサルタント", exp1_client: "クライアント Enedis",
+                exp1_1: "RHEL 8/9上でElastic StackとGrafanaを使用したIT部門全体の可観測性プラットフォーム（ログ、メトリクス）の管理と進化",
+                exp1_2: "Terraform、GitLab CI/CD、Ansibleによる完全なCI/CDパイプラインの設計と展開",
+                exp1_3: "分散トレーシングとユーザージャーニー分析のためのOpenTelemetryの統合",
+                exp1_4: "レベル3テクニカルサポートとチームメンタリング",
+                exp2_title: "DevOpsコンサルタント", exp2_client: "クライアント Cegid",
+                exp2_1: "IBM Cloudとのパートナーシップによる共有インフラへのクライアントポートフォリオ移行をリード",
+                exp2_2: "Azure DevOpsパイプラインによるデプロイメント自動化",
+                exp2_3: "レベル2ユーザーサポート",
+                exp3_title: "コンサルタント", exp3_client: "クライアント Enedis", exp3_1: "レベル2クライアントサポート",
+                skill_cicd: "CI/CD & 自動化", skill_db: "データベース", skill_monitoring: "可観測性",
+                skill_containers: "コンテナ & 仮想化", skill_scripting: "スクリプティング", skill_streaming: "ストリーミング & 収集",
+                skill_methods: "方法論 & ITSM", skill_os: "システム",
+                edu_master: "情報学修士", edu_licence: "情報学学士"
+            }
+        };
+
+        let currentLang = 'fr';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+                if (translations[lang][key]) el.textContent = translations[lang][key];
+            });
+            document.documentElement.lang = lang;
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.experience-card, .skill-card, .education-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
